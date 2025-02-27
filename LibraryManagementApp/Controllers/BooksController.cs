@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagementApp.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]    
     public class BooksController(IBooksRepository booksRepository) : ControllerBase
     {
         private readonly IBooksRepository _booksRepository = booksRepository;
 
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         public IActionResult GetAllBooks()
         {
@@ -20,7 +20,7 @@ namespace LibraryManagementApp.Controllers
             return Ok(Getbooks);
         }
 
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAllBooksbyId(string id)
         {
@@ -30,7 +30,7 @@ namespace LibraryManagementApp.Controllers
             return Ok(Getbooks);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]        
         public async Task<IActionResult> AddBooks(Books books)
         {
@@ -40,7 +40,7 @@ namespace LibraryManagementApp.Controllers
             return Ok("New book added");
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPut]      
         public async Task<IActionResult> UpdateBooks(Books books)
         {
@@ -51,7 +51,7 @@ namespace LibraryManagementApp.Controllers
             return Ok("book Updated");
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]        
         public async Task<IActionResult> DeleteBook(string id)
         {
