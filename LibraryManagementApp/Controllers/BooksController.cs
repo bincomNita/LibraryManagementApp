@@ -66,6 +66,7 @@ namespace LibraryManagementApp.Controllers
             return Ok($"book with ID {id} deleted successfully.");
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("grouped-by-author")]
         public async Task<IActionResult> GetBooksGroupedByAuthor()
         {
@@ -73,6 +74,7 @@ namespace LibraryManagementApp.Controllers
             return Ok(groupedBooks);
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet("top-borrowed")]
         public async Task<IActionResult> GetTopBorrowedBooks([FromQuery] int count = 3)
         {
