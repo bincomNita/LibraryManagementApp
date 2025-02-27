@@ -9,6 +9,5 @@ API end points are included for Login,Registation of use where user can add name
     End point for login /api/auth/login
 API End point are included for books to get book details,add,update and delete book,group by author and top 3 most borrowed books.
 
-
-
-
+After running an application Execute POST API End point for register once user registered successfully.Login with that user details then Token will generate for you.
+Use that token to Authorize each API end point.
